@@ -1,0 +1,12 @@
+# Resposta do GPT sobre possíveis erros da transcrição:
+
+É comum que o Whisper confunda palavras parecidas foneticamente, como:
+
+"girls" vs. "ghost"
+
+"there" vs. "their"
+
+"pain" vs. "pane"
+
+Esses erros acontecem porque o modelo baseia-se apenas no som,
+sem contexto semântico profundo ou letras oficiais para comparação. 
