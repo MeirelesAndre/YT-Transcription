@@ -1,5 +1,6 @@
 .venv/
 .env
 downloads/
-functions/__pycache__/
-util/__pycache__/
+app/__pycache__/
+app/functions/__pycache__/
+app/util/__pycache__/
