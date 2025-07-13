@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Transcrição ao Vivo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    pre { background: #f0f0f0; padding: 1em; border-radius: 5px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Transcrição ao Vivo</h1>
+  <pre id="output">Aguardando transcrição...</pre>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const url = urlParams.get("url");
+    const modelo = urlParams.get("modelo") || "base";
+    const forcar = urlParams.get("forcar") || "false";
+
+    const output = document.getElementById("output");
+    output.textContent = "Iniciando...\n\n";
+
+    const sse = new EventSource(`/transcrever-sse?url=${encodeURIComponent(url)}&modelo=${modelo}&forcar=${forcar}`);
+    
+    sse.onmessage = function(event) {
+      if (event.data === "[FIM]") {
+        sse.close();
+        output.textContent += "\n\n✅ Fim da transcrição!";
+      } else {
+        output.textContent += event.data + "\n";
+      }
+    };
+
+    sse.onerror = function() {
+      output.textContent += "\n❌ Erro na conexão.";
+      sse.close();
+    };
+  </script>
+</body>
+</html>

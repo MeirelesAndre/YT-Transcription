@@ -3,7 +3,7 @@ import re
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 URL = 'https://www.youtube.com/watch?v=QDLWghHmBJY'
 
@@ -18,6 +18,7 @@ def baixar_audio_youtube(url: str, destino: str = "downloads") -> str:
     """
     if not os.path.exists(destino):
         os.makedirs(destino)
+    print("🔗 Baixando do YouTube...")
 
     # Primeiro, extrai informações do vídeo (sem baixar)
     with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
@@ -27,7 +28,7 @@ def baixar_audio_youtube(url: str, destino: str = "downloads") -> str:
 
     # Verifica se o arquivo já existe
     if os.path.exists(caminho_final):
-        print(f"Áudio já existe: {caminho_final}")
+        print(f"🎵 Áudio já existe: {caminho_final}")
         return caminho_final
 
     # Define opções de download
@@ -47,13 +48,12 @@ def baixar_audio_youtube(url: str, destino: str = "downloads") -> str:
     # Faz o download se necessário
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
-    print (f"Download relizado : {caminho_final}")
+    print (f"✅Download relizado : {caminho_final}")
     return caminho_final
 
 if __name__ == "__main__":
     link = URL
-    print("Baixando do YouTube com yt-dlp..")
     caminho = baixar_audio_youtube(link)
     print(" ")
-    print("===== CONCLUÍDO =====")
+    print("\n===== CONCLUÍDO =====\n")
     print(" ")
