@@ -1,0 +1,16 @@
+Modelos e idiomas disponíveis:
+Existem seis tamanhos de modelo, quatro com versões somente em inglês,
+oferecendo compensações de velocidade e precisão. Abaixo estão os nomes dos modelos 
+disponíveis e seus requisitos aproximados de memória e velocidade de inferência em 
+relação ao modelo grande. As velocidades relativas abaixo são medidas transcrevendo 
+a fala em inglês em um A100, e a velocidade do mundo real pode variar 
+significativamente dependendo de muitos fatores, incluindo o idioma, a velocidade de fala 
+e o hardware disponível.
+
+Tamanho	Parâmetros	Modelo somente em inglês	Modelo multilíngue	VRAM necessária	Velocidade relativa
+tiny	39 M	    tiny.en	                    tiny	~1 GB	    ~10x
+base	74 M	    base.en	                    base	~1 GB	    ~7x
+small	244 M	    small.en	                small	~2 GB	    ~4x
+medium	769 M	    medium.en                 	medium	~5 GB	    ~2x
+large	1550 M	    N/A	                        large	~10 GB	    ~1x
+turbo	809 M	    N/A                      	turbo	~6 GB	    ~8x
